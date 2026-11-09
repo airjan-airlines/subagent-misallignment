@@ -141,7 +141,7 @@ One episode, with 3 rounds: conductor instruction → sub 1 → conductor 1 → 
 
 ## 4. Scripts (one per experiment)
 
-All scripts run from the repo root with `PYTHONPATH=src` (set in every Slurm file, e.g. [run_initial.sbatch:12](../slurm/run_initial.sbatch#L12)).
+All scripts run from the repo root, either with `uv run` (which installs `ccsteer` into the env) or with `PYTHONPATH=src`, which every Slurm file sets ([run_initial.sbatch:12](../slurm/run_initial.sbatch#L12)).
 
 ### `scripts/run_initial.py`: E0, the A/B direction
 
@@ -207,7 +207,7 @@ All scripts run from the repo root with `PYTHONPATH=src` (set in every Slurm fil
 
 ## 5. Slurm jobs (`slurm/`)
 
-All of them request 1 GPU on the `ocf-hpc` partition, `cd ~/ccsteer`, activate the venv, and set `PYTHONPATH=src HF_HOME=~/hf_cache`. Logs go to `logs/` on the cluster.
+All of them request 1 GPU on the `ocf-hpc` partition, `cd ~/ccsteer`, activate the uv-made `.venv`, and set `PYTHONPATH=src HF_HOME=~/hf_cache`. Logs go to `logs/` on the cluster.
 
 | File | Time limit | Runs |
 |---|---|---|

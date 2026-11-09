@@ -13,6 +13,7 @@ Legend: **git** = committed and pushed to GitHub · **local** = only on this lap
 aamas-paper/
 ├── README.md                   overview for new contributors (start here)
 ├── CLAUDE.md                   rules for Claude (must stay at the top level)
+├── pyproject.toml, uv.lock     environment (uv sync); requirements.txt for pip
 ├── docs/                       all project writing
 │   ├── SPEC.md                 project plan, status, results (source of truth)
 │   ├── CODEBASE.md             code guide with line links
@@ -31,7 +32,7 @@ The flow is: **`slurm/` job → runs a `scripts/` file → which uses `src/ccste
 Where things live:
 - **This laptop**: everything below.
 - **GitHub** ([airjan-airlines/subagent-misallignment](https://github.com/airjan-airlines/subagent-misallignment), public): everything marked git.
-- **Cluster** (`ocf-hpc:~/ccsteer`): same code and results, plus `venv/`, `logs/` and the models in `~/hf_cache`. Not a git repo.
+- **Cluster** (`ocf-hpc:~/ccsteer`): same code and results, plus `.venv/` (made by `uv sync`), `logs/` and the models in `~/hf_cache`. Not a git repo.
 
 ---
 
@@ -41,7 +42,12 @@ Where things live:
 |---|---|---|
 | `README.md` | git | Overview for new contributors: central question, approaches, what is built, initial results, links to everything else |
 | `CLAUDE.md` | git | Rules for Claude working in this repo: keep SPEC current, use Slurm, keep detection data separate from the data used to make the model misbehave. Stays at the top level because Claude Code only reads it there |
-| `.gitignore` | git | Ignores `venv/`, `results/**/*.pt`, `__pycache__/`, `*.pyc`, `.DS_Store`, `logs/`, `docs/initial-ideas.md` |
+| `pyproject.toml` | git | Project + dependencies for uv. Pins Python 3.11, torch 2.5.1 (CUDA 12.1 build on Linux), transformers 4.51.3; installs `src/ccsteer` as a package |
+| `uv.lock` | git | Exact versions of every package, so everyone gets the same environment. Made by `uv lock`; don't edit by hand |
+| `.python-version` | git | Tells uv to use Python 3.11 |
+| `requirements.txt` | git | The same pins for plain `pip`, exported from the lock (`uv export`). Re-export after changing dependencies |
+| `.venv/` | ignored | The environment `uv sync` builds. Never rsync it to the cluster |
+| `.gitignore` | git | Ignores `venv/`, `.venv/`, `results/**/*.pt`, `__pycache__/`, `*.pyc`, `.DS_Store`, `logs/`, `docs/initial-ideas.md` |
 | `.DS_Store` | ignored | macOS Finder junk |
 | `.git/` | — | Git history, remote `origin` → GitHub |
 

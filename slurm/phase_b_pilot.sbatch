@@ -8,7 +8,7 @@
 # T2 (content control) and T6 (two-agent pilot) on Qwen3-1.7B. Submit from ~/ccsteer: sbatch slurm/phase_b_pilot.sbatch
 set -e
 cd ~/ccsteer
-. venv/bin/activate
+. .venv/bin/activate
 export PYTHONPATH=src HF_HOME=~/hf_cache
 python scripts/run_content_control.py --model Qwen/Qwen3-1.7B --ff results/e1_qwen3-1.7b/ff_vectors.pt \
     --ab results/e0_qwen3-1.7b/vectors.pt --layers 14 16 18 20 --out results/t2_qwen3-1.7b

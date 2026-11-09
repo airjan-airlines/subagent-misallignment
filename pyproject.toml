@@ -1,0 +1,30 @@
+[project]
+name = "ccsteer"
+version = "0.1.0"
+description = "Misaligned sub-agents: corner-cutting directions, steering, and two-agent persuasion"
+readme = "README.md"
+requires-python = "==3.11.*"
+# torch and transformers are pinned to the versions every result so far was produced with (cluster venv, Oct 2026).
+dependencies = [
+    "torch==2.5.1",
+    "transformers==4.51.3",
+    "accelerate==1.6.0",
+    "scikit-learn>=1.5",
+    "numpy>=1.26",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ccsteer"]
+
+# CUDA 12.1 builds on Linux (the OCF driver is CUDA 12.2); default PyPI wheels elsewhere (macOS: CPU/MPS only).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu121", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true

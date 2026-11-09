@@ -9,7 +9,7 @@
 # Submit from ~/ccsteer: sbatch slurm/phase_a_8b.sbatch
 set -e
 cd ~/ccsteer
-. venv/bin/activate
+. .venv/bin/activate
 export PYTHONPATH=src HF_HOME=~/hf_cache
 LAYERS="16 18 20 22 24 26"
 python scripts/run_initial.py --model Qwen/Qwen3-8B --out results/e0_qwen3-8b

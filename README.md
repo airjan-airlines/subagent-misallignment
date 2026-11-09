@@ -85,8 +85,8 @@ results/       outputs, one folder per <experiment>_<model>
 docs/          spec, guides, reading list
 ```
 
-- **Dependencies:** Python with `torch` (2.5.1, CUDA 12.1 build), `transformers` (4.51.3) and `scikit-learn`. There's no requirements file yet.
-- **Running:** use `PYTHONPATH=src python scripts/<script>.py --help` from the repo root. Every script needs a CUDA GPU.
+- **Setup:** install [uv](https://docs.astral.sh/uv/), then run `uv sync` in the repo root. It installs Python 3.11 and the exact pinned versions from `uv.lock` (torch 2.5.1, transformers 4.51.3), using the CUDA 12.1 torch build on Linux. Without uv, use `pip install -r requirements.txt` on Python 3.11.
+- **Running:** `uv run python scripts/<script>.py --help` from the repo root. `ccsteer` is installed into the env, so no `PYTHONPATH` is needed. Every experiment needs a CUDA GPU; on a Mac you can import and read the code, but not run it.
 - **Compute:** experiments run on the OCF cluster through Slurm (3× A6000, 24 h job limit). See [SPEC §9](docs/SPEC.md#9-cluster-operations) for the sync and submit commands.
 - **The saved direction files (`results/**/*.pt`) are not in git.** Most scripts after E0/E1 load them, so after cloning, either re-run E0 and E1 or ask for the files (~3 MB).
 

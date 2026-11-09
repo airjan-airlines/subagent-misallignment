@@ -1,7 +1,7 @@
 # SPEC: Misaligned sub-agents, internal persuasion, and conductor contamination
 
 Living spec. **Update this file in the same change as any code, experiment, or decision** (see `CLAUDE.md` in the repo root).
-Last updated: 2026-10-09.
+Last updated: 2026-11-08.
 
 Contents: [1 Thesis](#1-thesis-and-claims) · [2 Venue and citations](#2-venue-and-citation-strategy) · [3 Architecture](#3-architecture) · [4 Experiments](#4-experiment-roadmap) · [5 Code map](#5-code-map) · [6 Results](#6-results-log) · [7 Decisions](#7-decision-log) · [8 Risks](#8-risks-and-open-questions) · [9 Ops](#9-cluster-operations) · [10 GPU trials](#10-gpu-trial-plan)
 
@@ -84,6 +84,7 @@ Keep line numbers current. Re-check with `grep -n` after every edit.
 | What | Where |
 |---|---|
 | **Guides**: contributor overview; code walkthrough with line links; file layout | `README.md`, `docs/CODEBASE.md`, `docs/FILES.md` |
+| **Environment**: uv project, pinned deps; pip export | `pyproject.toml`, `uv.lock`, `requirements.txt` |
 | **Model I/O** | |
 | Layer convention (block output = `hidden_states[l+1]`) | `src/ccsteer/model.py:3` |
 | Load model and tokenizer (bf16, left padding) | `src/ccsteer/model.py:14` |
@@ -177,6 +178,7 @@ Newest first. Every entry gives the date, experiment ID, model, result path, and
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-11-08 | Manage the environment with uv (`pyproject.toml` + `uv.lock`, Python 3.11 pinned); Slurm jobs activate `.venv` | The cluster venv broke when the system python3 moved to 3.13; uv pins its own Python and gives contributors a one-command setup |
 | 2026-10-09 | Drop AAMAS; target ICML 2027 | AAMAS deadline passed; the work is interpretability-led |
 | 2026-10-09 | Start on Qwen3-1.7B, then 8B | Small, fast first test; 8B fits on one A6000 for E1+ |
 | 2026-10-09 | CAA A/B contrast format first | Cheap and deterministic; free-form contrast comes in E1 |
@@ -209,9 +211,9 @@ Newest first. Every entry gives the date, experiment ID, model, result path, and
 ## 9. Cluster operations
 
 - `ssh ocf-hpc` (alias in `~/.ssh/config`). The login node `segfault` has no GPU. The GPU node `corruption` has 3× RTX A6000 48GB.
-- Code lives at `~/ccsteer` on the cluster, with the venv at `~/ccsteer/venv` (torch 2.5.1+cu121, transformers 4.51.3) and models at `~/hf_cache`.
+- Code lives at `~/ccsteer` on the cluster, with models at `~/hf_cache`. The environment is managed by uv (`pyproject.toml` + `uv.lock`, Python 3.11, torch 2.5.1+cu121, transformers 4.51.3): run `uv sync` in `~/ccsteer` to create `.venv/`, which every Slurm job activates. The old `~/ccsteer/venv` broke when the system `python3` moved to 3.13 (found 2026-11-08) and is no longer used.
 - Git: `origin` = https://github.com/airjan-airlines/subagent-misallignment (public for now). Results JSON/JSONL are committed; `*.pt` vectors are gitignored and live only locally and on the cluster. The cluster copy is not a git checkout.
-- Sync: `rsync -av --exclude venv --exclude results --exclude .git ./ ocf-hpc:ccsteer/`
+- Sync: `rsync -av --exclude venv --exclude .venv --exclude results --exclude .git ./ ocf-hpc:ccsteer/` (never copy the local `.venv`; it is built for macOS)
 - Run E0: `ssh ocf-hpc 'cd ccsteer && sbatch slurm/run_initial.sbatch'`
 - Fetch results: `rsync -av ocf-hpc:ccsteer/results/ results/`
 - Always pass `--gres=gpu:N`. Don't leave interactive sessions or idle jobs holding GPUs.

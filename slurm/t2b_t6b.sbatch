@@ -9,7 +9,7 @@
 # Submit from ~/ccsteer: sbatch slurm/t2b_t6b.sbatch
 set -e
 cd ~/ccsteer
-. venv/bin/activate
+. .venv/bin/activate
 export PYTHONPATH=src HF_HOME=~/hf_cache
 python scripts/run_decision_check.py --model Qwen/Qwen3-8B --out results/t6b_qwen3-8b
 python scripts/run_decision_check.py --model Qwen/Qwen3-1.7B --out results/t6b_qwen3-1.7b
