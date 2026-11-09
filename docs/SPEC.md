@@ -83,7 +83,7 @@ Keep line numbers current. Re-check with `grep -n` after every edit.
 
 | What | Where |
 |---|---|
-| **Guides**: code walkthrough with line links; file layout | `docs/CODEBASE.md`, `docs/FILES.md` |
+| **Guides**: contributor overview; code walkthrough with line links; file layout | `README.md`, `docs/CODEBASE.md`, `docs/FILES.md` |
 | **Model I/O** | |
 | Layer convention (block output = `hidden_states[l+1]`) | `src/ccsteer/model.py:3` |
 | Load model and tokenizer (bf16, left padding) | `src/ccsteer/model.py:14` |

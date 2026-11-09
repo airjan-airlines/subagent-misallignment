@@ -11,9 +11,10 @@ Legend: **git** = committed and pushed to GitHub · **local** = only on this lap
 
 ```
 aamas-paper/
+├── README.md                   overview for new contributors (start here)
 ├── CLAUDE.md                   rules for Claude (must stay at the top level)
 ├── docs/                       all project writing
-│   ├── SPEC.md                 project plan, status, results (start here)
+│   ├── SPEC.md                 project plan, status, results (source of truth)
 │   ├── CODEBASE.md             code guide with line links
 │   ├── FILES.md                this file
 │   ├── reading-list.md         related papers
@@ -38,6 +39,7 @@ Where things live:
 
 | File | Status | What it is |
 |---|---|---|
+| `README.md` | git | Overview for new contributors: central question, approaches, what is built, initial results, links to everything else |
 | `CLAUDE.md` | git | Rules for Claude working in this repo: keep SPEC current, use Slurm, keep detection data separate from the data used to make the model misbehave. Stays at the top level because Claude Code only reads it there |
 | `.gitignore` | git | Ignores `venv/`, `results/**/*.pt`, `__pycache__/`, `*.pyc`, `.DS_Store`, `logs/`, `docs/initial-ideas.md` |
 | `.DS_Store` | ignored | macOS Finder junk |
