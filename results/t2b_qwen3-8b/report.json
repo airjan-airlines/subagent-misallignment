@@ -1,0 +1,241 @@
+{
+ "model": "Qwen/Qwen3-8B",
+ "n_real": 53,
+ "layers": {
+  "16": {
+   "intent": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 0.662109375,
+    "test_adopt_vs_honest": 0.9765625,
+    "real_cut_vs_honest": 0.01488095238095238
+   },
+   "endorsed": {
+    "test_adopt_vs_reject": 0.9775390625,
+    "test_adopt_vs_describe": 0.94140625,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6145833333333333
+   },
+   "ff": {
+    "test_adopt_vs_reject": 0.4130859375,
+    "test_adopt_vs_describe": 0.73046875,
+    "test_adopt_vs_honest": 0.916015625,
+    "real_cut_vs_honest": 0.9955357142857143
+   },
+   "ab": {
+    "test_adopt_vs_reject": 0.3408203125,
+    "test_adopt_vs_describe": 0.16796875,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.9627976190476191
+   },
+   "probe": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.44047619047619047
+   },
+   "cos_intent_ff": -0.16846485435962677,
+   "cos_intent_ab": -0.032361950725317
+  },
+  "18": {
+   "intent": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 0.91796875,
+    "test_adopt_vs_honest": 0.970703125,
+    "real_cut_vs_honest": 0.09821428571428571
+   },
+   "endorsed": {
+    "test_adopt_vs_reject": 0.9990234375,
+    "test_adopt_vs_describe": 0.986328125,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6145833333333333
+   },
+   "ff": {
+    "test_adopt_vs_reject": 0.3623046875,
+    "test_adopt_vs_describe": 0.642578125,
+    "test_adopt_vs_honest": 0.908203125,
+    "real_cut_vs_honest": 0.9866071428571429
+   },
+   "ab": {
+    "test_adopt_vs_reject": 0.712890625,
+    "test_adopt_vs_describe": 0.232421875,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.9806547619047619
+   },
+   "probe": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.5208333333333334
+   },
+   "cos_intent_ff": -0.1356973946094513,
+   "cos_intent_ab": -0.0012398399412631989
+  },
+  "20": {
+   "intent": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 0.9921875,
+    "test_adopt_vs_honest": 0.9765625,
+    "real_cut_vs_honest": 0.1636904761904762
+   },
+   "endorsed": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6235119047619049
+   },
+   "ff": {
+    "test_adopt_vs_reject": 0.4169921875,
+    "test_adopt_vs_describe": 0.568359375,
+    "test_adopt_vs_honest": 0.93359375,
+    "real_cut_vs_honest": 0.9970238095238095
+   },
+   "ab": {
+    "test_adopt_vs_reject": 0.640625,
+    "test_adopt_vs_describe": 0.201171875,
+    "test_adopt_vs_honest": 0.94140625,
+    "real_cut_vs_honest": 0.9806547619047619
+   },
+   "probe": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6220238095238095
+   },
+   "cos_intent_ff": -0.090662881731987,
+   "cos_intent_ab": 0.0025824103504419327
+  },
+  "22": {
+   "intent": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 0.857421875,
+    "test_adopt_vs_honest": 0.880859375,
+    "real_cut_vs_honest": 0.18154761904761904
+   },
+   "endorsed": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.5803571428571428
+   },
+   "ff": {
+    "test_adopt_vs_reject": 0.330078125,
+    "test_adopt_vs_describe": 0.31640625,
+    "test_adopt_vs_honest": 0.88671875,
+    "real_cut_vs_honest": 1.0
+   },
+   "ab": {
+    "test_adopt_vs_reject": 0.234375,
+    "test_adopt_vs_describe": 0.0234375,
+    "test_adopt_vs_honest": 0.271484375,
+    "real_cut_vs_honest": 0.9821428571428572
+   },
+   "probe": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6547619047619048
+   },
+   "cos_intent_ff": -0.07383941113948822,
+   "cos_intent_ab": -0.017326168715953827
+  },
+  "24": {
+   "intent": {
+    "test_adopt_vs_reject": 0.953125,
+    "test_adopt_vs_describe": 0.59765625,
+    "test_adopt_vs_honest": 0.623046875,
+    "real_cut_vs_honest": 0.41220238095238093
+   },
+   "endorsed": {
+    "test_adopt_vs_reject": 0.9970703125,
+    "test_adopt_vs_describe": 0.966796875,
+    "test_adopt_vs_honest": 0.98828125,
+    "real_cut_vs_honest": 0.6458333333333333
+   },
+   "ff": {
+    "test_adopt_vs_reject": 0.4638671875,
+    "test_adopt_vs_describe": 0.341796875,
+    "test_adopt_vs_honest": 0.884765625,
+    "real_cut_vs_honest": 0.9970238095238095
+   },
+   "ab": {
+    "test_adopt_vs_reject": 0.189453125,
+    "test_adopt_vs_describe": 0.029296875,
+    "test_adopt_vs_honest": 0.1640625,
+    "real_cut_vs_honest": 0.9047619047619048
+   },
+   "probe": {
+    "test_adopt_vs_reject": 1.0,
+    "test_adopt_vs_describe": 1.0,
+    "test_adopt_vs_honest": 1.0,
+    "real_cut_vs_honest": 0.6711309523809523
+   },
+   "cos_intent_ff": -0.0223400816321373,
+   "cos_intent_ab": 0.038784436881542206
+  }
+ },
+ "steering": [
+  {
+   "layer": -1,
+   "coef": 0.0,
+   "cut_rate": 0.25,
+   "cut_rate_at_0.5": 0.4375,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 16,
+   "coef": -0.5,
+   "cut_rate": 0.25,
+   "cut_rate_at_0.5": 0.5625,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 16,
+   "coef": -0.25,
+   "cut_rate": 0.0625,
+   "cut_rate_at_0.5": 0.40625,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 16,
+   "coef": 0.25,
+   "cut_rate": 0.625,
+   "cut_rate_at_0.5": 0.9375,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 16,
+   "coef": 0.5,
+   "cut_rate": 0.6875,
+   "cut_rate_at_0.5": 1.0,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 18,
+   "coef": -0.5,
+   "cut_rate": 0.03125,
+   "cut_rate_at_0.5": 0.625,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 18,
+   "coef": -0.25,
+   "cut_rate": 0.03125,
+   "cut_rate_at_0.5": 0.3125,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 18,
+   "coef": 0.25,
+   "cut_rate": 0.40625,
+   "cut_rate_at_0.5": 0.8125,
+   "coherent_rate": 1.0
+  },
+  {
+   "layer": 18,
+   "coef": 0.5,
+   "cut_rate": 0.59375,
+   "cut_rate_at_0.5": 0.96875,
+   "coherent_rate": 1.0
+  }
+ ]
+}
