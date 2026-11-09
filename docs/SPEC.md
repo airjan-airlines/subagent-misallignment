@@ -1,6 +1,6 @@
 # SPEC: Misaligned sub-agents, internal persuasion, and conductor contamination
 
-Living spec. **Update this file in the same change as any code, experiment, or decision** (see `CLAUDE.md`).
+Living spec. **Update this file in the same change as any code, experiment, or decision** (see `CLAUDE.md` in the repo root).
 Last updated: 2026-10-09.
 
 Contents: [1 Thesis](#1-thesis-and-claims) · [2 Venue and citations](#2-venue-and-citation-strategy) · [3 Architecture](#3-architecture) · [4 Experiments](#4-experiment-roadmap) · [5 Code map](#5-code-map) · [6 Results](#6-results-log) · [7 Decisions](#7-decision-log) · [8 Risks](#8-risks-and-open-questions) · [9 Ops](#9-cluster-operations) · [10 GPU trials](#10-gpu-trial-plan)
@@ -83,6 +83,7 @@ Keep line numbers current. Re-check with `grep -n` after every edit.
 
 | What | Where |
 |---|---|
+| **Guides**: code walkthrough with line links; file layout | `docs/CODEBASE.md`, `docs/FILES.md` |
 | **Model I/O** | |
 | Layer convention (block output = `hidden_states[l+1]`) | `src/ccsteer/model.py:3` |
 | Load model and tokenizer (bf16, left padding) | `src/ccsteer/model.py:14` |
@@ -108,7 +109,7 @@ Keep line numbers current. Re-check with `grep -n` after every edit.
 | **Two-agent harness (Phase B)** | |
 | Sub-agent kinds (honest / hidden prompt / steered); conductor kinds (plain / warned) | `src/ccsteer/harness.py:25`, `:34` |
 | Templates: delegation, instruction, APPROVE/REJECT question (and swapped order) | `src/ccsteer/harness.py:35`, `:39` |
-| `Episode`: each agent's view of the conversation | `src/ccsteer/harness.py:41` |
+| `Episode`: each agent's view of the conversation | `src/ccsteer/harness.py:43` |
 | `run_episodes`: lockstep play; steering only on sub-agent turns | `src/ccsteer/harness.py:73` |
 | `p_approve`: conductor's first-token P(APPROVE) after the last sub-agent message | `src/ccsteer/harness.py:96` |
 | `read_episodes`: hook-free readings, own tokens + conductor-reads-sub | `src/ccsteer/harness.py:108` |
